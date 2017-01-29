@@ -1,5 +1,5 @@
 #2016-2017 PERSONAL PROJECTS: TurtleChat!
-#WRITE YOUR NAME HERE!
+# A L M A !
 
 #####################################################################################
 #                                   IMPORTS                                         #
@@ -9,7 +9,9 @@
 #Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
 #####################################################################################
 #####################################################################################
-
+import turtle
+from turtle_chat_client import Client
+from turtle_chat_widgets import Button, TextInput
 #####################################################################################
 #                                   TextBox                                         #
 #####################################################################################
@@ -37,7 +39,21 @@
 #   \r to your string.  Test it out at the Python shell for practice
 #####################################################################################
 #####################################################################################
+class TextBox(TextInput):
+    def draw_box(self):
+        turtle.penup()
+        turtle.goto(self.pos)
+        turtle.pendown()
+        turtle.goto(0,self.height)
+        turtle.goto(self.height,self.width)
+        turtle.goto(self.width,0)
+        turtle.goto(self.pos)
+        turtle.penup()
+        turtle.mainloop()
 
+        box= TextBox()
+    #def write_msg(self):
+        
 #####################################################################################
 #                                  SendButton                                       #
 #####################################################################################
@@ -66,6 +82,7 @@
 #Read the comments below for hints and directions.
 ##################################################################
 ##################################################################
+
 class View:
     _MSG_LOG_LENGTH=5 #Number of messages to retain in view
     _SCREEN_WIDTH=300
