@@ -41,19 +41,27 @@ from turtle_chat_widgets import Button, TextInput
 #####################################################################################
 class TextBox(TextInput):
     def draw_box(self):
-        turtle.penup()
-        turtle.goto(self.pos)
-        turtle.pendown()
-        turtle.goto(0,self.height)
-        turtle.goto(self.height,self.width)
-        turtle.goto(self.width,0)
-        turtle.goto(self.pos)
-        turtle.penup()
-        turtle.mainloop()
+        turtle2=turtle.clone()
+        turtle2.penup()
+        turtle2.goto(self.pos)
+        turtle2.goto(-self.width/2,self.height/2)
+        turtle2.pendown()
+        turtle2.goto(-self.width/2,self.height/2)
+        turtle2.goto(self.width/2,self.height/2)
+        turtle2.goto(self.width/2,-100)
+        turtle2.goto(-self.width/2,-100)
+        turtle2.goto(-self.width/2,self.height/2)
+        turtle2.penup()
 
-        box= TextBox()
-    #def write_msg(self):
+    def write_msg(self):
+        self.writer.clear()
+        if len(self.get_msg()) % self.letters_per_line == 0:
+            self.new_msg=self.new_msg+ "\r"
+        print(self.get_msg())
+        self.writer.write(self.get_msg())
         
+
+TextBox()
 #####################################################################################
 #                                  SendButton                                       #
 #####################################################################################
@@ -72,7 +80,9 @@ class TextBox(TextInput):
 #####################################################################################
 #####################################################################################
 
-
+class SendButton(Botton):
+    def fun(self):
+        pass
 ##################################################################
 #                             View                               #
 ##################################################################
