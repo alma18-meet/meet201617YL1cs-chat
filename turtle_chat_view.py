@@ -44,13 +44,13 @@ class TextBox(TextInput):
         turtle2=turtle.clone()
         turtle2.penup()
         turtle2.goto(self.pos)
-        turtle2.goto(-self.width/2,self.height/2)
+        turtle2.goto(self.width/2,self.height/2)
         turtle2.pendown()
         turtle2.goto(-self.width/2,self.height/2)
+        turtle2.goto(-self.width/2,-self.height/2)
+        turtle2.goto(self.width/2,-self.height/2)
+        #turtle2.goto(-self.width/2,-100)
         turtle2.goto(self.width/2,self.height/2)
-        turtle2.goto(self.width/2,-100)
-        turtle2.goto(-self.width/2,-100)
-        turtle2.goto(-self.width/2,self.height/2)
         turtle2.penup()
 
     def write_msg(self):
