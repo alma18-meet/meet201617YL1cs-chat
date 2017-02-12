@@ -49,7 +49,6 @@ class TextBox(TextInput):
         turtle2.goto(-self.width/2,self.height/2)
         turtle2.goto(-self.width/2,-self.height/2)
         turtle2.goto(self.width/2,-self.height/2)
-        #turtle2.goto(-self.width/2,-100)
         turtle2.goto(self.width/2,self.height/2)
         turtle2.penup()
 
@@ -80,9 +79,12 @@ TextBox()
 #####################################################################################
 #####################################################################################
 
-class SendButton(Botton):
+class SendButton(Button):
+    def __init__(self,view,my_turtle=None,shape=None,pos=(0,0)):
+        super(SendButton,self).__init__(my_turtle,shape,pos)
+        self.view=view
     def fun(self,x=None,y=None):
-        pass
+        self.view.send_msg()
 ##################################################################
 #                             View                               #
 ##################################################################
