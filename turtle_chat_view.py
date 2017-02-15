@@ -44,12 +44,12 @@ class TextBox(TextInput):
         turtle2=turtle.clone()
         turtle2.penup()
         turtle2.goto(self.pos)
-        turtle2.goto(self.width/2,self.height/2)
+        turtle2.goto(self.width/2+50,self.height/2)
         turtle2.pendown()
         turtle2.goto(-self.width/2,self.height/2)
         turtle2.goto(-self.width/2,-self.height/2)
-        turtle2.goto(self.width/2,-self.height/2)
-        turtle2.goto(self.width/2,self.height/2)
+        turtle2.goto(self.width/2+50,-self.height/2)
+        turtle2.goto(self.width/2+50,self.height/2)
         turtle2.penup()
 
     def write_msg(self):
@@ -109,12 +109,13 @@ class View:
         ###
         #Store the username and partner_name into the instance.
         ###
-
+        self.my_username= username
+        self.my_partner_name= partner_name
         ###
         #Make a new client object and store it in this instance of View
         #(i.e. self).  The name of the instance should be my_client
         ###
-
+        self.my_client= Client(username,partner_name,hostname=None,port=None)
         ###
         #Set screen dimensions using turtle.setup
         #You can get help on this function, as with other turtle functions,
@@ -125,7 +126,7 @@ class View:
         #
         #at the Python shell.
         ###
-
+        
         ###
         #This list will store all of the messages.
         #You can add strings to the front of the list using
@@ -140,17 +141,19 @@ class View:
         #You can use the clear() and write() methods to erase
         #and write messages for each
         ###
-
+        self.new_msg.clear()
+        self.new_msg.write()
         ###
         #Create a TextBox instance and a SendButton instance and
         #Store them inside of this instance
         ###
-
+        self.my_TextBox=TextBox()
+        self.my_SendButton=SendButton()
         ###
         #Call your setup_listeners() function, if you have one,
         #and any other remaining setup functions you have invented.
         ###
-
+        self.setup_listeners()
     def send_msg(self):
         '''
         You should implement this method.  It should call the
@@ -179,6 +182,8 @@ class View:
 
         Then, it can call turtle.listen()
         '''
+        turtle.onkeypress(self.my_SendButton.fun)
+        turtle.listen()
         pass
 
     def msg_received(self,msg):
