@@ -141,14 +141,18 @@ class View:
         #You can use the clear() and write() methods to erase
         #and write messages for each
         ###
-        self.new_msg.clear()
-        self.new_msg.write()
+        '''
+        my_new_turtles=[]
+        for a in range(self._MSG_LOG_LENGTH):
+            my_new_turtles.append(turtle.clone())
+            my_new_turtles[a].goto(-(self._SCREEN_WIDTH/2),a*(self._SCREEN_HEIGHT/2))
+          '''  
         ###
         #Create a TextBox instance and a SendButton instance and
         #Store them inside of this instance
         ###
         self.my_TextBox=TextBox()
-        self.my_SendButton=SendButton()
+        self.my_SendButton=SendButton(self)
         ###
         #Call your setup_listeners() function, if you have one,
         #and any other remaining setup functions you have invented.
@@ -164,7 +168,11 @@ class View:
         It should call self.display_msg() to cause the message
         display to be updated.
         '''
-        pass
+        #pass
+        self.Client.send()
+        self.msg_queue.append(new_msg)
+        self.clear_msg()
+        self.display_msg()
 
     def get_msg(self):
         return self.textbox.get_msg()
@@ -182,9 +190,9 @@ class View:
 
         Then, it can call turtle.listen()
         '''
-        turtle.onkeypress(self.my_SendButton.fun)
+        turtle.onkeypress(self.my_SendButton.fun,"Return")
         turtle.listen()
-        pass
+        #pass
 
     def msg_received(self,msg):
         '''
@@ -201,14 +209,19 @@ class View:
         #or append (to put at the end).
         #
         #Then, call the display_msg method to update the display
+        self.msg_queue.append(new_msg)
+        self.display_msg()
 
     def display_msg(self):
         '''
         This method should update the messages displayed in the screen.
         You can get the messages you want from self.msg_queue
         '''
-        pass
-
+        #pass
+        self.msg_queue.pop()
+        turtle3=turtle.clone()
+        turtle3.writer.write(self.get_msg())
+        
     def get_client(self):
         return self.my_client
 ##############################################################
