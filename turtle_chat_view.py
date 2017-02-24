@@ -204,12 +204,12 @@ class View:
                     - this should be displayed on the screen
         '''
         print(msg) #Debug - print message
-        show_this_msg=self.partner_name+' says:\r'+ msg
+        show_this_msg=self.my_partner_name+' says:\r'+ msg
         #Add the message to the queue either using insert (to put at the beginning)
         #or append (to put at the end).
         #
         #Then, call the display_msg method to update the display
-        self.msg_queue.append(self.my_TextBox.new_msg)
+        self.msg_queue.append(show_this_msg)
         self.display_msg()
 
     def display_msg(self):
