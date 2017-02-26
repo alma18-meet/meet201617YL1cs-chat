@@ -12,6 +12,8 @@
 import turtle
 from turtle_chat_client import Client
 from turtle_chat_widgets import Button, TextInput
+
+turtle.color('purple')
 #####################################################################################
 #                                   TextBox                                         #
 #####################################################################################
@@ -44,12 +46,12 @@ class TextBox(TextInput):
         turtle2=turtle.clone()
         turtle2.penup()
         turtle2.goto(self.pos)
-        turtle2.goto(self.width/2+50,self.height/2)
+        turtle2.goto(self.width/2,self.height/2)
         turtle2.pendown()
         turtle2.goto(-self.width/2,self.height/2)
         turtle2.goto(-self.width/2,-self.height/2)
-        turtle2.goto(self.width/2+50,-self.height/2)
-        turtle2.goto(self.width/2+50,self.height/2)
+        turtle2.goto(self.width/2,-self.height/2)
+        turtle2.goto(self.width/2,self.height/2)
         turtle2.penup()
 
     def write_msg(self):
@@ -80,7 +82,7 @@ class TextBox(TextInput):
 #####################################################################################
 
 class SendButton(Button):
-    def __init__(self,view,my_turtle=None,shape=None,pos=(0,0)):
+    def __init__(self,view,my_turtle=None,shape=None,pos=(0,-100)):
         super(SendButton,self).__init__(my_turtle,shape,pos)
         self.view=view
     def fun(self,x=None,y=None):
@@ -126,7 +128,7 @@ class View:
         #
         #at the Python shell.
         ###
-        
+        turtle.setup(width= self._SCREEN_WIDTH,height= self._SCREEN_HEIGHT)
         ###
         #This list will store all of the messages.
         #You can add strings to the front of the list using
@@ -144,6 +146,7 @@ class View:
         
         self.my_new_turtles=[]
         for a in range(self._MSG_LOG_LENGTH):
+            turtle.penup()
             self.my_new_turtles.append(turtle.clone())
             self.my_new_turtles[a].goto(-(self._SCREEN_WIDTH/2),a*(self._SCREEN_HEIGHT/2))
         

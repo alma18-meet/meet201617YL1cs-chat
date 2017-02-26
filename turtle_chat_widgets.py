@@ -35,7 +35,8 @@ class Button(metaclass=ABCMeta):
         self.turtle.goto(pos)
 
         if shape is None:
-            self.turtle.shape('square')
+            self.turtle.color('lightblue')
+            self.turtle.shape('circle')
             self.turtle.shapesize(2,10)
         else:
             turtle.addshape(shape)
