@@ -12,8 +12,10 @@
 import turtle
 from turtle_chat_client import Client
 from turtle_chat_widgets import Button, TextInput
-
-turtle.color('purple')
+screen=turtle.Screen()
+screen.bgpic('mandala.gif')
+turtle.color('white')
+turtle.pensize(5)
 #####################################################################################
 #                                   TextBox                                         #
 #####################################################################################
@@ -41,6 +43,8 @@ turtle.color('purple')
 #   \r to your string.  Test it out at the Python shell for practice
 #####################################################################################
 #####################################################################################
+turtle.hideturtle()
+
 class TextBox(TextInput):
     def draw_box(self):
         turtle2=turtle.clone()
@@ -59,8 +63,8 @@ class TextBox(TextInput):
         if len(self.get_msg()) % self.letters_per_line == 0:
             self.new_msg=self.new_msg+ "\r"
         print(self.get_msg())
-        self.writer.write(self.get_msg())
-        
+        self.writer.write(self.get_msg(), font=("Ariel",16,"normal"))
+    
 
 #TextBox()
 #####################################################################################
@@ -224,9 +228,9 @@ class View:
         #self.msg_queue.pop()
         #turtle3=turtle.clone()
         #turtle3.writer.write(self.get_msg())
+        self.my_new_turtles[0].goto(-50,200)
         self.my_new_turtles[0].clear()
-        self.my_new_turtles[0].write(self.msg_queue[-1])
-        
+        self.my_new_turtles[0].write(self.msg_queue[-1], font=("Arie",14,"normal"))
     def get_client(self):
         return self.my_client
 ##############################################################

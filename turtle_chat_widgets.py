@@ -35,7 +35,7 @@ class Button(metaclass=ABCMeta):
         self.turtle.goto(pos)
 
         if shape is None:
-            self.turtle.color('lightblue')
+            self.turtle.color('white')
             self.turtle.shape('circle')
             self.turtle.shapesize(2,10)
         else:
@@ -64,7 +64,7 @@ class TextInput(metaclass=ABCMeta):
     This class sets up a textbox to take live text input from
     the user via keyboard listeners.
     '''
-    def __init__(self, width=200, height=100, pos=(0,0), background_gif=None, letters_per_line=40):
+    def __init__(self, width=200, height=100, pos=(0,0), background_gif=None, letters_per_line=14):
         '''
         Initialize TextInput object.
 
